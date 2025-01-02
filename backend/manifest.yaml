@@ -34,10 +34,10 @@ spec:
         created_by: raidi
         app: backend
     spec:
-      initContainers:
-      - name: mysql-check
-        image: busybox:1.28
-        command: ['sh', '-c', "until nslookup mysql; do echo waiting for myservice; sleep 2; done"]
+      # initContainers:
+      # - name: mysql-check
+      #   image: busybox:1.28
+      #   command: ['sh', '-c', "until nslookup mysql; do echo waiting for myservice; sleep 2; done"]
       containers:
         - name: backend
           image: raidi/backend:v1
@@ -53,18 +53,18 @@ spec:
           envFrom:
           - configMapRef:
               name: backend
-             # health check
-          readinessProbe:
-              tcpSocket:
-                port: 8080
-              initialDelaySeconds: 15
-              periodSeconds: 10
-          livenessProbe:
-              httpGet:
-                path: /health
-                port: 8080
-              initialDelaySeconds: 3
-              periodSeconds: 3 
+          #    # health check
+          # readinessProbe:
+          #     tcpSocket:
+          #       port: 8080
+          #     initialDelaySeconds: 15
+          #     periodSeconds: 10
+          # livenessProbe:
+          #     httpGet:
+          #       path: /health
+          #       port: 8080
+          #     initialDelaySeconds: 3
+          #     periodSeconds: 3 
 ---
 kind: Service
 apiVersion: v1
