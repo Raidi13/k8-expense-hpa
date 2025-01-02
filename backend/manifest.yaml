@@ -46,10 +46,10 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 120Mi
+              memory: 128Mi
             limits:
               cpu: 100m
-              memory: 120Mi
+              memory: 128Mi
           envFrom:
           - configMapRef:
               name: backend
